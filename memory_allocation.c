@@ -6,7 +6,7 @@
 /*   By: poatmeal <poatmeal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 17:32:47 by poatmeal          #+#    #+#             */
-/*   Updated: 2020/02/18 18:40:35 by poatmeal         ###   ########.fr       */
+/*   Updated: 2020/02/25 16:21:40 by poatmeal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void		memory_allocation(int fd, t_map *map)
 		i++;
 		free(line);
 	}
+	n = n + 1;
 	close(fd);
 	map->y = i;
 	map->x = n;
@@ -75,7 +76,6 @@ void		memory_allocation(int fd, t_map *map)
 	while (count < i)
 	{
 		map->map[count] = (t_data *)malloc(sizeof(t_data) * n + 1);
-		//fill_color(map->map[count], n);
 		count++;
 	}
 	fill_color(map->map, i, n);

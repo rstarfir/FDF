@@ -6,7 +6,7 @@
 /*   By: poatmeal <poatmeal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 19:48:48 by poatmeal          #+#    #+#             */
-/*   Updated: 2020/02/19 15:05:35 by poatmeal         ###   ########.fr       */
+/*   Updated: 2020/02/25 15:41:04 by poatmeal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int			parser_fdf(int fd, t_map *map, char *argv, char *line)
 	i = 0;
 	if (get_next_line(fd, &line) < 0)
 		return (0);
+	free(line);
 	memory_allocation(fd, map);
 	fd = open(argv, O_RDONLY);
 	while (get_next_line(fd, &line) > 0)
@@ -93,10 +94,7 @@ int			parser_fdf(int fd, t_map *map, char *argv, char *line)
 		n = check_line(line, map, i, 0);
 		if ((m != 0 && n != 0) || n == 0)
 			if (n != m || n == 0)
-			{
-				free(line);
 				return (0);
-			}
 		i++;
 		free(line);
 	}

@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+		"mlx.h": "c",
+		"validation.h": "c",
+		"map.h": "c",
+		"__tree": "c",
+		"map": "c"
+	}
+}

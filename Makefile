@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: poatmeal <poatmeal@student.42.fr>          +#+  +:+       +#+         #
+#    By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 20:25:07 by poatmeal          #+#    #+#              #
-#    Updated: 2020/02/18 13:46:10 by poatmeal         ###   ########.fr        #
+#    Updated: 2020/02/26 00:43:39 by rstarfir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LFLAGS = -L $(LIBFT) -lft
 
 MLXFLAGS = -L $(MLX) -lmlx -framework OpenGL -framework AppKit
 
-FILES = ./main.c ./map_check.c ./memory_allocation.c ./image.c ./draw.c
+FILES = ./main.c ./map_check.c ./memory_allocation.c ./image.c ./draw.c ./init.c
 
 OBJS = $(FILES:%.c=%.o)
 
@@ -41,10 +41,10 @@ libmlx.a:
 	make -C $(MLX)
 
 $(NAME): $(OBJS)
-	gcc $(FFLAGS) -o $(NAME) $(OBJS) $(LFLAGS) $(MLXFLAGS)
+	gcc -o $(NAME) $(OBJS) $(LFLAGS) $(MLXFLAGS)
 
 %.o: %.c
-	gcc $(FFLAGS) -I $(LIBFT2) -I $(MLX2) -I $(INCLUDES) -o $@ -c $<
+	gcc -I $(LIBFT2) -I $(MLX2) -I $(INCLUDES) -o $@ -c $<
 
 clean: 
 	rm -rf $(OBJS)
