@@ -6,7 +6,7 @@
 #    By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 20:25:07 by poatmeal          #+#    #+#              #
-#    Updated: 2020/02/26 00:43:39 by rstarfir         ###   ########.fr        #
+#    Updated: 2020/03/04 13:34:24 by rstarfir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LFLAGS = -L $(LIBFT) -lft
 
 MLXFLAGS = -L $(MLX) -lmlx -framework OpenGL -framework AppKit
 
-FILES = ./main.c ./map_check.c ./memory_allocation.c ./image.c ./draw.c ./init.c
+FILES = ./main.c ./map_check.c ./memory_allocation.c ./image.c ./draw.c ./init.c ./button_press.c ./change_coord.c
 
 OBJS = $(FILES:%.c=%.o)
 
@@ -41,10 +41,10 @@ libmlx.a:
 	make -C $(MLX)
 
 $(NAME): $(OBJS)
-	gcc -o $(NAME) $(OBJS) $(LFLAGS) $(MLXFLAGS)
+	gcc $(FFLAGS) -o $(NAME) $(OBJS) $(LFLAGS) $(MLXFLAGS)
 
 %.o: %.c
-	gcc -I $(LIBFT2) -I $(MLX2) -I $(INCLUDES) -o $@ -c $<
+	gcc $(FFLAGS) -I $(LIBFT2) -I $(MLX2) -I $(INCLUDES) -o $@ -c $<
 
 clean: 
 	rm -rf $(OBJS)

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   map_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poatmeal <poatmeal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 19:48:48 by poatmeal          #+#    #+#             */
-/*   Updated: 2020/02/25 15:41:04 by poatmeal         ###   ########.fr       */
+/*   Updated: 2020/03/05 16:03:17 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/map.h"
+#include "includes/fdf.h"
 
 int			check_symb(char *line, t_map *map, size_t y, size_t x)
 {
@@ -81,10 +81,12 @@ int			parser_fdf(int fd, t_map *map, char *argv, char *line)
 	size_t	i;
 
 	n = 0;
-	m = 0;
 	i = 0;
 	if (get_next_line(fd, &line) < 0)
+	{
+		free(line);
 		return (0);
+	}
 	free(line);
 	memory_allocation(fd, map);
 	fd = open(argv, O_RDONLY);

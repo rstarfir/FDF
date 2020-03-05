@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   memory_allocation.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: poatmeal <poatmeal@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 17:32:47 by poatmeal          #+#    #+#             */
-/*   Updated: 2020/02/25 16:21:40 by poatmeal         ###   ########.fr       */
+/*   Updated: 2020/03/02 22:46:25 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/map.h"
+#include "includes/fdf.h"
 
 void		fill_color(t_data **map, int m, int n)
 {
@@ -68,14 +68,13 @@ void		memory_allocation(int fd, t_map *map)
 		i++;
 		free(line);
 	}
-	n = n + 1;
 	close(fd);
 	map->y = i;
 	map->x = n;
-	map->map = (t_data **)malloc(sizeof(t_data *) * i + 1);
+	map->map = (t_data **)ft_memalloc(sizeof(t_data *) * i + 1);
 	while (count < i)
 	{
-		map->map[count] = (t_data *)malloc(sizeof(t_data) * n + 1);
+		map->map[count] = (t_data *)ft_memalloc(sizeof(t_data) * n + 1);
 		count++;
 	}
 	fill_color(map->map, i, n);
