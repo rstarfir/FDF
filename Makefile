@@ -6,7 +6,7 @@
 #    By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 20:25:07 by poatmeal          #+#    #+#              #
-#    Updated: 2020/03/04 13:34:24 by rstarfir         ###   ########.fr        #
+#    Updated: 2020/03/10 15:09:16 by rstarfir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LFLAGS = -L $(LIBFT) -lft
 
 MLXFLAGS = -L $(MLX) -lmlx -framework OpenGL -framework AppKit
 
-FILES = ./main.c ./map_check.c ./memory_allocation.c ./image.c ./draw.c ./init.c ./button_press.c ./change_coord.c
+FILES = ./main.c ./map_check.c ./memory_allocation.c ./image.c ./draw.c ./init.c ./button_press.c ./change_coord.c 
 
 OBJS = $(FILES:%.c=%.o)
 

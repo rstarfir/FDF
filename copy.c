@@ -68,6 +68,7 @@ t_point		trans(t_point dot, t_view view)
 	new_z  = -sin(beta) * dot.x + cos(beta) * sin(gama) * dot.y + cos(beta) * cos(gama) * dot.z;
 		new_x = (150 * new_x) / (new_z + 150);
 		new_y = (150 * new_y) / (new_z + 150);*/
+	
 	if (view.iso == 1)
 	{
 		new_x = (dot.x - dot.y) * cos(0.46373398);
