@@ -6,7 +6,7 @@
 /*   By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 17:13:36 by rstarfir          #+#    #+#             */
-/*   Updated: 2020/03/12 17:07:36 by rstarfir         ###   ########.fr       */
+/*   Updated: 2020/03/17 16:52:38 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ t_point		trans(t_point dot, t_mlx *mlx)
 		//dot.x += 0.5 * (mlx->map->x) * mlx->view.scale;
 		//dot.y += 0.5 * (mlx->map->y) * mlx->view.scale;
 		//dot.z += WIDTH * 0.5 * (mlx->map->x - 1) - HEIGHT * 0.5 * (mlx->map->y) * mlx->view.scale;
+		dot.x -= 0.5 * mlx->map->x * mlx->view.scale;
+		dot.y -= 0.5 * mlx->map->y * mlx->view.scale;
 		new_x = cos(mlx->view.angle_z) * cos(mlx->view.angle_y) * dot.x + cos(mlx->view.angle_z) * sin(mlx->view.angle_y) * sin(mlx->view.angle_x) * dot.y - \
 			sin(mlx->view.angle_z) * cos(mlx->view.angle_x) * dot.y + cos(mlx->view.angle_z) * sin(mlx->view.angle_y) * cos(mlx->view.angle_x) * dot.z + \
 			sin(mlx->view.angle_z) * sin(mlx->view.angle_x) * dot.z;
@@ -41,7 +43,7 @@ t_point		trans(t_point dot, t_mlx *mlx)
 		new_x = (new_x - new_y) * cos(0.46373398);
 		new_y = -new_z + (new_x + new_y) * sin(0.46373398);
 		new_z = (new_x - new_y) * sin(0.46373398);
-		
+
 	}
 	else
 	{
