@@ -5,7 +5,7 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/02/25 15:30:33 by poatmeal          #+#    #+#             */
+/*   Created: 2020/02/25 15:30:33 by rstarfir          #+#    #+#             */
 /*   Updated: 2020/03/12 23:27:29 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -17,13 +17,13 @@ int			key_press(int keycode, t_mlx *tmp)
 	ft_bzero(tmp->img.data, WIDTH * HEIGHT * (tmp->img.bpp / 8));
 	if (keycode == 53)
 		exit(0);
-	else if (keycode == KEY_PAD_1 && !tmp->view.help)
+	else if (keycode == KEY_Z && !tmp->view.help)
 		tmp->view.iso = 0;
-	else if (keycode == KEY_PAD_2 && !tmp->view.help)
+	else if (keycode == KEY_X && !tmp->view.help)
 		tmp->view.iso = 1;
-	if (keycode == KEY_PAD_ADD && !tmp->view.help)
+	if (keycode == KEY_ADD && !tmp->view.help)
 		tmp->view.scale /= 0.9;
-	if (keycode == KEY_PAD_SUB && !tmp->view.help)
+	if (keycode == KEY_SUB && !tmp->view.help)
 		tmp->view.scale *= 0.9;
 	if (keycode == KEY_LEFT && !tmp->view.help)
 		tmp->view.move_x -= tmp->view.scale;
@@ -33,19 +33,34 @@ int			key_press(int keycode, t_mlx *tmp)
 		tmp->view.move_y -= tmp->view.scale;
 	if (keycode == KEY_DOWN && !tmp->view.help)
 		tmp->view.move_y += tmp->view.scale;
-	if (keycode == KEY_PAD_7 && !tmp->view.help)
+	if (keycode == KEY_Q && !tmp->view.help)
 	{
 		tmp->view.angle_z += 0.0349066;
 		tmp->view.iso = 2;
 	}
-	if (keycode == KEY_PAD_8 && !tmp->view.help)
+	if (keycode == KEY_A && !tmp->view.help)
+	{
+		tmp->view.angle_z -= 0.0349066;
+		tmp->view.iso = 2;
+	}
+	if (keycode == KEY_W && !tmp->view.help)
 	{
 		tmp->view.angle_y += 0.0349066;
 		tmp->view.iso = 2;
 	}
-	if (keycode == KEY_PAD_9 && !tmp->view.help)
+	if (keycode == KEY_S && !tmp->view.help)
+	{
+		tmp->view.angle_y -= 0.0349066;
+		tmp->view.iso = 2;
+	}
+	if (keycode == KEY_E && !tmp->view.help)
 	{
 		tmp->view.angle_x += 0.0349066;
+		tmp->view.iso = 2;
+	}
+	if (keycode == KEY_D && !tmp->view.help)
+	{
+		tmp->view.angle_x -= 0.0349066;
 		tmp->view.iso = 2;
 	}
 	if (keycode == KEY_H)
@@ -56,14 +71,50 @@ int			key_press(int keycode, t_mlx *tmp)
 	return (0);
 }
 
-void		color_init(t_map *map, t_mlx *tmp, int i, int j)
+double		map_gradient(int height)
+{
+	int			color;
+	
+	color = BLYU;
+	if (height != 0)
+		color = ROSE;
+	if (height < 0)
+		color = DARK;
+	return (color);
+}
+
+void		color_init_h(t_map *map, t_mlx *tmp, int i, int j)
 {
 	if (map->map[i][j].color != -1)
 		tmp->img.clr = map->map[i][j].color;
-	else if (map->map[i][j].height != 0)
-		tmp->img.clr = 0xffa5ea;
 	else
-		tmp->img.clr = 0x97b8ff;
+		tmp->img.clr = map_gradient(map->map[i][j].height);
+	if (j + 1 < map->x)
+	{
+		if (map->map[i][j + 1].color != -1)
+			tmp->img.clr2 = map->map[i][j + 1].color;
+		else
+			tmp->img.clr2 = map_gradient(map->map[i][j + 1].height);
+	}
+	else
+		tmp->img.clr2 = tmp->img.clr;
+}
+
+void		color_init_v(t_map *map, t_mlx *tmp, int i, int j)
+{
+	if (map->map[i][j].color != -1)
+		tmp->img.clr = map->map[i][j].color;
+	else
+		tmp->img.clr = map_gradient(map->map[i][j].height);
+	if (i + 1 < map->y)
+	{
+		if (map->map[i + 1][j].color != -1)
+			tmp->img.clr2 = map->map[i + 1][j].color;
+		else
+			tmp->img.clr2 = map_gradient(map->map[i + 1][j].height);
+	}
+	else
+		tmp->img.clr2 = tmp->img.clr;
 }
 
 int			image_init(t_mlx *mlx)

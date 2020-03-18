@@ -38,19 +38,19 @@ void		help_prompt(t_mlx *tmp)
 		mlx_string_put(tmp->mlx, tmp->wndw, 20, 100, 0xFFFFFF,
 				"move right: KEY_RIGHT");
 		mlx_string_put(tmp->mlx, tmp->wndw, 20, 120, 0xFFFFFF,
-				"isometric projection: KEY_PAD_2");
+				"isometric projection: KEY_Z");
 		mlx_string_put(tmp->mlx, tmp->wndw, 20, 140, 0xFFFFFF,
-				"parallel projection: KEY_PAD_1");
+				"parallel projection: KEY_X");
 		mlx_string_put(tmp->mlx, tmp->wndw, 20, 160, 0xFFFFFF,
-				"X axis rotation: KEY_PAD_7");
+				"X axis rotation: KEY_Q/KEY_A");
 		mlx_string_put(tmp->mlx, tmp->wndw, 20, 180, 0xFFFFFF,
-				"Y axis rotation: KEY_PAD_8");
+				"Y axis rotation: KEY_W/KEY_S");
 		mlx_string_put(tmp->mlx, tmp->wndw, 20, 200, 0xFFFFFF,
-				"Z axis rotation: KEY_PAD_9");
+				"Z axis rotation: KEY_E/KEY_D");
 		mlx_string_put(tmp->mlx, tmp->wndw, 20, 220, 0xFFFFFF,
-				"ZOOM ZOOM IN: KEY_PAD_+");	
+				"ZOOM ZOOM IN: KEY_+");	
 		mlx_string_put(tmp->mlx, tmp->wndw, 20, 240, 0xFFFFFF,
-				"ZOOM ZOOM OUT: KEY_PAD_-");	
+				"ZOOM ZOOM OUT: KEY_-");	
 		mlx_string_put(tmp->mlx, tmp->wndw, 20, 260, 0xFFFFFF,
 				"to exit the window press");
 		mlx_string_put(tmp->mlx, tmp->wndw, 270, 260, 0x00FA9A,

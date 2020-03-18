@@ -67,14 +67,14 @@ void		draw_matrix(t_map *map, t_mlx *tmp)
 		while (++j < map->x)
 		{
 			start_horiz(&ps, &pf, i, j);
-			color_init(map, tmp, i, j);
+			color_init_h(map, tmp, i, j);
 			if (j < map->x - 1)
 			{
 				ps.z = map->map[i][j].height;
 				horiz_check(map, i, j, &pf);
 				drawline(tmp, trans(ps, tmp), trans(pf,tmp));
 			}
-			end_horiz(&pf, i, j);
+			end_horiz(&pf, i, j, tmp);
 			if (i < map->y - 1)
 			{
 				ps.z = map->map[i][j].height;

@@ -20,21 +20,28 @@
 # include <math.h>
 # include "libft.h"
 # define PI 3.1415926535
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 1280
+# define HEIGHT 720
 
 # define KEY_H 4
-# define KEY_PAD_1 83
-# define KEY_PAD_2 84
-# define KEY_PAD_7 89
-# define KEY_PAD_8 91
-# define KEY_PAD_9 92
-# define KEY_PAD_ADD 69
-# define KEY_PAD_SUB 78
+# define KEY_Z 7
+# define KEY_X 6
+# define KEY_Q 12
+# define KEY_W 13
+# define KEY_E 14
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+# define KEY_ADD 24
+# define KEY_SUB 27
 # define KEY_LEFT 123
 # define KEY_RIGHT 124
 # define KEY_DOWN 125
 # define KEY_UP 126
+
+# define ROSE 0xFFC40C
+# define BLYU 0x555A9C
+# define DARK 0x000099
 
 typedef struct		s_data
 {
@@ -53,7 +60,8 @@ typedef struct		s_img
 {
 	void			*img_ptr;
 	int				*data;
-	int				clr;
+	double			clr;
+	double			clr2;;
 	int				bpp;
 	int				size_l;
 	int				endian;
@@ -87,6 +95,10 @@ typedef struct		s_point
 	int				y;
 	int				xi;
 	int				yi;
+	int				sy;
+	int				sx;
+	int				fy;
+	int				fx;
 	int				z; 
 	int				x_sign;
 	int				y_sign;
@@ -97,15 +109,16 @@ void				drawline(t_mlx *tmp, t_point ps, t_point pf);
 int					image_init(t_mlx *mlx);
 void				draw_matrix(t_map *map, t_mlx *mlx);
 void				help_prompt(t_mlx *tmp);
-void				color_init(t_map *map, t_mlx *tmp, int i, int j);
+void				color_init_h(t_map *map, t_mlx *tmp, int i, int j);
+void				color_init_v(t_map *map, t_mlx *tmp, int i, int j);
 int					ft_close(void);
 void				horiz_check(t_map *map, int i, int j, t_point *pf);
 int					start_vert(t_point *ps, int i, int *j);
 void				start_horiz(t_point *ps, t_point *pf, int i, int j);
-void				end_horiz(t_point *pf, int i, int j);
+void				end_horiz(t_point *pf, int i, int j, t_mlx *tmp);
 void				vert_check(t_map *map, int i, int j, t_point *pf);
 int					parser_fdf(int fd, t_map *map, char *argv, char *line);
 void				memory_allocation(int fd, t_map *map);
-int					get_color();
+int					get_color(double size, int color1, int color2);
 
 #endif

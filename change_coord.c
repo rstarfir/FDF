@@ -34,10 +34,11 @@ void		start_horiz(t_point *ps, t_point *pf, int i, int j)
 	pf->y = i;
 }
 
-void		end_horiz(t_point *pf, int i, int j)
+void		end_horiz(t_point *pf, int i, int j, t_mlx *tmp)
 {
 	pf->x = j;
 	pf->y = i + 1;
+	color_init_v(tmp->map, tmp, i, j);
 }
 
 void		vert_check(t_map *map, int i, int j, t_point *pf)
