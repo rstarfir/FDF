@@ -6,7 +6,7 @@
 /*   By: rstarfir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 15:30:33 by rstarfir          #+#    #+#             */
-/*   Updated: 2020/05/24 17:19:58 by rstarfir         ###   ########.fr       */
+/*   Updated: 2020/05/24 19:34:43 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ int			key_press(int keycode, t_mlx *tmp)
 		tmp->view.move_y += tmp->view.scale;
 	if (keycode == KEY_H)
 		tmp->view.help = (tmp->view.help) ? 0 : 1;
-	if (other_keys(keycode, tmp) == 0)
-		tmp->view.iso = 2;
+	other_keys(keycode, tmp);
 	draw_matrix(tmp->map, tmp);
 	mlx_put_image_to_window(tmp->mlx, tmp->wndw, tmp->img.img_ptr, 0, 0);
 	help_prompt(tmp);

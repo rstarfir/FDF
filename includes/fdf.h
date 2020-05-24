@@ -6,7 +6,7 @@
 /*   By: rstarfir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 20:36:06 by rstarfir          #+#    #+#             */
-/*   Updated: 2020/05/24 16:42:48 by rstarfir         ###   ########.fr       */
+/*   Updated: 2020/05/24 19:39:59 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void				drawline(t_mlx *tmp, t_point ps, t_point pf);
 int					image_init(t_mlx *mlx);
 void				draw_matrix(t_map *map, t_mlx *mlx);
 void				help_prompt(t_mlx *tmp);
+void				help_prompt2(t_mlx *tmp);
 void				color_init_h(t_map *map, t_mlx *tmp, int i, int j);
 void				color_init_v(t_map *map, t_mlx *tmp, int i, int j);
 int					ft_close(void);
@@ -120,6 +121,7 @@ void				vert_check(t_map *map, int i, int j, t_point *pf);
 int					parser_fdf(int fd, t_map *map, char *argv, char *line);
 void				memory_allocation(int fd, t_map *map);
 int					get_color(double size, int color1, int color2);
-int					other_keys(int keycode, t_mlx *tmp);
+void				other_keys(int keycode, t_mlx *tmp);
+void				other_keys2(int keycode, t_mlx *tmp);
 
 #endif

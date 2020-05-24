@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+         #
+#    By: rstarfir <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/11/06 20:25:07 by poatmeal          #+#    #+#              #
-#    Updated: 2020/03/10 15:09:16 by rstarfir         ###   ########.fr        #
+#    Created: 2019/11/06 20:25:07 by rstarfir          #+#    #+#              #
+#    Updated: 2020/05/24 21:33:45 by rstarfir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LIBFT = libft
 
-MLX = minilibx
+MLX = minilibxclean
 
 NAME = fdf
 

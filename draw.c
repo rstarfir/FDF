@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rstarfir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 20:32:49 by rstarfir          #+#    #+#             */
-/*   Updated: 2020/03/11 18:37:28 by rstarfir         ###   ########.fr       */
+/*   Updated: 2020/05/24 21:18:41 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@ int		get_color(double size, int color1, int color2)
 	int		green;
 	int		blue;
 
-	red = ((int)((1 - size) * ((color1 >> 16) & 0xFF) + size * ((color2 >> 16) & 0xFF)));
-	green = ((int)((1 - size) * ((color1 >> 8) & 0xFF) + size * ((color2 >> 8) & 0xFF)));
-	blue = ((int)((1 - size) * (color1 & 0xFF) + size * (color2 & 0xFF)));
+	red = ((int)((1 - size) * ((color1 >> 16) & 0xFF) +\
+		size * ((color2 >> 16) & 0xFF)));
+	green = ((int)((1 - size) * ((color1 >> 8) & 0xFF) +\
+		size * ((color2 >> 8) & 0xFF)));
+	blue = ((int)((1 - size) * (color1 & 0xFF) +\
+		size * (color2 & 0xFF)));
 	return ((red << 16) | (green << 8) | blue);
 }
 
@@ -60,7 +63,8 @@ void	abtuse(t_mlx *tmp, t_point *d, t_point pf, int err)
 		(d->yi >= 0) && (d->yi < HEIGHT - 1))
 		{
 			i++;
-			tmp->img.data[d->yi * WIDTH + d->xi] = get_color1(d, tmp->img.clr, tmp->img.clr2);
+			tmp->img.data[d->yi * WIDTH + d->xi] =\
+				get_color1(d, tmp->img.clr, tmp->img.clr2);
 		}
 		if ((pf.x >= 0) && (pf.x < WIDTH - 1) &&
 		(pf.y >= 0) && (pf.y < HEIGHT - 1))
@@ -75,7 +79,6 @@ void	abtuse(t_mlx *tmp, t_point *d, t_point pf, int err)
 	}
 }
 
-
 void	acute(t_mlx *tmp, t_point *d, t_point pf, int err)
 {
 	int		i;
@@ -87,7 +90,8 @@ void	acute(t_mlx *tmp, t_point *d, t_point pf, int err)
 		(d->yi >= 0) && (d->yi < HEIGHT - 1))
 		{
 			i++;
-			tmp->img.data[d->yi * WIDTH + d->xi] = get_color1(d, tmp->img.clr, tmp->img.clr2);
+			tmp->img.data[d->yi * WIDTH + d->xi] =\
+				get_color1(d, tmp->img.clr, tmp->img.clr2);
 		}
 		if ((pf.x >= 0) && (pf.x < WIDTH - 1) &&
 		(pf.y >= 0) && (pf.y < HEIGHT - 1))
