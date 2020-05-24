@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rstarfir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/17 13:58:06 by poatmeal          #+#    #+#             */
-/*   Updated: 2020/03/05 16:04:03 by rstarfir         ###   ########.fr       */
+/*   Updated: 2020/05/24 16:40:58 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int		check_fdf(char *file, int argc)
 {
 	if (argc != 2 || !ft_strstr(file, ".fdf"))
 	{
-		ft_putstr("Where is your map, beach?");
+		ft_putstr("No map. Try again");
 		return (0);
 	}
 	return (1);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rstarfir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 17:13:36 by rstarfir          #+#    #+#             */
-/*   Updated: 2020/03/17 16:52:38 by rstarfir         ###   ########.fr       */
+/*   Updated: 2020/05/24 16:24:57 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,6 @@ t_point		trans(t_point dot, t_mlx *mlx)
 	}
 	else if (mlx->view.iso == 2)
 	{
-		//dot.x += 0.5 * (mlx->map->x) * mlx->view.scale;
-		//dot.y += 0.5 * (mlx->map->y) * mlx->view.scale;
-		//dot.z += WIDTH * 0.5 * (mlx->map->x - 1) - HEIGHT * 0.5 * (mlx->map->y) * mlx->view.scale;
 		dot.x -= 0.5 * mlx->map->x * mlx->view.scale;
 		dot.y -= 0.5 * mlx->map->y * mlx->view.scale;
 		new_x = cos(mlx->view.angle_z) * cos(mlx->view.angle_y) * dot.x + cos(mlx->view.angle_z) * sin(mlx->view.angle_y) * sin(mlx->view.angle_x) * dot.y - \
@@ -38,16 +35,15 @@ t_point		trans(t_point dot, t_mlx *mlx)
 			sin(mlx->view.angle_z) * sin(mlx->view.angle_x) * dot.z;
 		new_y = sin(mlx->view.angle_z) * cos(mlx->view.angle_y) * dot.x + sin(mlx->view.angle_z) * sin(mlx->view.angle_y) * sin(mlx->view.angle_x) * dot.y + \
 			cos(mlx->view.angle_z) * cos(mlx->view.angle_x) * dot.y + sin(mlx->view.angle_z) * sin(mlx->view.angle_y) * cos(mlx->view.angle_x) * dot.z - \
-			cos(mlx->view.angle_z) * sin(mlx->view.angle_x); //pravilno'ish
+			cos(mlx->view.angle_z) * sin(mlx->view.angle_x); 
 		new_z  = -sin(mlx->view.angle_y) * dot.x + cos(mlx->view.angle_y) * sin(mlx->view.angle_x) * dot.y + cos(mlx->view.angle_y) * cos(mlx->view.angle_x) * dot.z;
 		new_x = (new_x - new_y) * cos(0.46373398);
 		new_y = -new_z + (new_x + new_y) * sin(0.46373398);
 		new_z = (new_x - new_y) * sin(0.46373398);
-
 	}
 	else
 	{
-		new_x = dot.x; //0.0349066
+		new_x = dot.x;
 		new_y = dot.y;
 	}
 	dot.x = mlx->view.move_x + new_x + 0.5 * WIDTH - 0.5 * (mlx->map->x - 1) * mlx->view.scale;

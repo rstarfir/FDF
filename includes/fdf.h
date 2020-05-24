@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rstarfir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 20:36:06 by rstarfir          #+#    #+#             */
-/*   Updated: 2020/03/12 16:29:41 by rstarfir         ###   ########.fr       */
+/*   Updated: 2020/05/24 16:42:48 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define HEIGHT 720
 
 # define KEY_H 4
-# define KEY_Z 7
-# define KEY_X 6
+# define KEY_Z 6
+# define KEY_X 7
 # define KEY_Q 12
 # define KEY_W 13
 # define KEY_E 14
@@ -39,8 +39,8 @@
 # define KEY_DOWN 125
 # define KEY_UP 126
 
-# define ROSE 0xFFC40C
-# define BLYU 0x555A9C
+# define FINCLR 0xFFC40C
+# define STRTCLR 0x555A9C
 # define DARK 0x000099
 
 typedef struct		s_data
@@ -120,5 +120,6 @@ void				vert_check(t_map *map, int i, int j, t_point *pf);
 int					parser_fdf(int fd, t_map *map, char *argv, char *line);
 void				memory_allocation(int fd, t_map *map);
 int					get_color(double size, int color1, int color2);
+int					other_keys(int keycode, t_mlx *tmp);
 
 #endif
