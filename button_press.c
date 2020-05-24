@@ -18,6 +18,17 @@ int			ft_close(void)
 	return (0);
 }
 
+int		other_keys(int keycode, t_mlx *tmp)
+{
+	(keycode == KEY_Q && !tmp->view.help) ? tmp->view.angle_z += 0.0349066 : 1;
+	(keycode == KEY_A && !tmp->view.help) ? tmp->view.angle_z -= 0.0349066 : 1;
+	(keycode == KEY_W && !tmp->view.help) ? tmp->view.angle_y += 0.0349066 : 1;
+	(keycode == KEY_S && !tmp->view.help) ? tmp->view.angle_y -= 0.0349066 : 1;
+	(keycode == KEY_E && !tmp->view.help) ? tmp->view.angle_x += 0.0349066 : 1;
+	(keycode == KEY_D && !tmp->view.help) ? tmp->view.angle_x -= 0.0349066 : 1;
+	return (0);
+}
+
 void		help_prompt(t_mlx *tmp)
 {
 	if (tmp->view.help == 0)

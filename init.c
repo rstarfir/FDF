@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rstarfir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 15:30:33 by rstarfir          #+#    #+#             */
-/*   Updated: 2020/03/12 23:27:29 by rstarfir         ###   ########.fr       */
+/*   Updated: 2020/05/24 17:19:58 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,13 @@
 int			key_press(int keycode, t_mlx *tmp)
 {
 	ft_bzero(tmp->img.data, WIDTH * HEIGHT * (tmp->img.bpp / 8));
-	if (keycode == 53)
-		exit(0);
-	else if (keycode == KEY_Z && !tmp->view.help)
+	(keycode == 53) ? exit(0) : 0;
+	if (keycode == KEY_Z && !tmp->view.help)
 		tmp->view.iso = 0;
-	else if (keycode == KEY_X && !tmp->view.help)
+	if (keycode == KEY_X && !tmp->view.help)
 		tmp->view.iso = 1;
-	if (keycode == KEY_ADD && !tmp->view.help)
-		tmp->view.scale /= 0.9;
-	if (keycode == KEY_SUB && !tmp->view.help)
-		tmp->view.scale *= 0.9;
+	(keycode == KEY_ADD && !tmp->view.help) ? tmp->view.scale /= 0.9 : 0;
+	(keycode == KEY_SUB && !tmp->view.help) ? tmp->view.scale *= 0.9 : 0;
 	if (keycode == KEY_LEFT && !tmp->view.help)
 		tmp->view.move_x -= tmp->view.scale;
 	if (keycode == KEY_RIGHT && !tmp->view.help)
@@ -33,38 +30,10 @@ int			key_press(int keycode, t_mlx *tmp)
 		tmp->view.move_y -= tmp->view.scale;
 	if (keycode == KEY_DOWN && !tmp->view.help)
 		tmp->view.move_y += tmp->view.scale;
-	if (keycode == KEY_Q && !tmp->view.help)
-	{
-		tmp->view.angle_z += 0.0349066;
-		tmp->view.iso = 2;
-	}
-	if (keycode == KEY_A && !tmp->view.help)
-	{
-		tmp->view.angle_z -= 0.0349066;
-		tmp->view.iso = 2;
-	}
-	if (keycode == KEY_W && !tmp->view.help)
-	{
-		tmp->view.angle_y += 0.0349066;
-		tmp->view.iso = 2;
-	}
-	if (keycode == KEY_S && !tmp->view.help)
-	{
-		tmp->view.angle_y -= 0.0349066;
-		tmp->view.iso = 2;
-	}
-	if (keycode == KEY_E && !tmp->view.help)
-	{
-		tmp->view.angle_x += 0.0349066;
-		tmp->view.iso = 2;
-	}
-	if (keycode == KEY_D && !tmp->view.help)
-	{
-		tmp->view.angle_x -= 0.0349066;
-		tmp->view.iso = 2;
-	}
 	if (keycode == KEY_H)
 		tmp->view.help = (tmp->view.help) ? 0 : 1;
+	if (other_keys(keycode, tmp) == 0)
+		tmp->view.iso = 2;
 	draw_matrix(tmp->map, tmp);
 	mlx_put_image_to_window(tmp->mlx, tmp->wndw, tmp->img.img_ptr, 0, 0);
 	help_prompt(tmp);
@@ -74,10 +43,10 @@ int			key_press(int keycode, t_mlx *tmp)
 double		map_gradient(int height)
 {
 	int			color;
-	
-	color = BLYU;
+
+	color = STRTCLR;
 	if (height != 0)
-		color = ROSE;
+		color = FINCLR;
 	if (height < 0)
 		color = DARK;
 	return (color);
@@ -141,7 +110,6 @@ int			image_init(t_mlx *mlx)
 	draw_matrix(mlx->map, mlx);
 	mlx_hook(mlx->wndw, 2, 0, key_press, mlx);
 	mlx_put_image_to_window(mlx->mlx, mlx->wndw, mlx->img.img_ptr, 0, 0);
-	help_prompt(mlx);
 	mlx_hook(mlx->wndw, 17, 0L, ft_close, mlx);
 	mlx_loop(mlx->mlx);
 	return (0);
