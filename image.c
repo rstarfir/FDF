@@ -6,7 +6,7 @@
 /*   By: rstarfir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 17:13:36 by rstarfir          #+#    #+#             */
-/*   Updated: 2020/05/25 13:00:41 by rstarfir         ###   ########.fr       */
+/*   Updated: 2020/05/25 14:23:26 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void		matrices(t_point dot, t_mlx *mlx, t_point *new)
 	new->z = (new->x - new->y) * sin(0.46373398);
 }
 
-
 t_point		trans(t_point dot, t_mlx *mlx)
 {
 	t_point		new;
@@ -53,9 +52,7 @@ t_point		trans(t_point dot, t_mlx *mlx)
 		new.y = -dot.z + (dot.x + dot.y) * sin(0.46373398);
 	}
 	else if (mlx->view.iso == 2)
-	{
 		matrices(dot, mlx, &new);
-	}
 	else
 	{
 		new.x = dot.x;
