@@ -6,11 +6,36 @@
 /*   By: rstarfir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 17:13:36 by rstarfir          #+#    #+#             */
-/*   Updated: 2020/05/24 21:15:57 by rstarfir         ###   ########.fr       */
+/*   Updated: 2020/05/25 13:00:41 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/fdf.h"
+
+void		matrices(t_point dot, t_mlx *mlx, t_point *new)
+{
+	dot.x -= 0.5 * mlx->map->x * mlx->view.scale;
+	dot.y -= 0.5 * mlx->map->y * mlx->view.scale;
+	new->x = cos(mlx->view.angle_z) * cos(mlx->view.angle_y) * dot.x +\
+		cos(mlx->view.angle_z) * sin(mlx->view.angle_y) *\
+		sin(mlx->view.angle_x) * dot.y - sin(mlx->view.angle_z) *\
+		cos(mlx->view.angle_x) * dot.y + cos(mlx->view.angle_z) *\
+		sin(mlx->view.angle_y) * cos(mlx->view.angle_x) * dot.z +\
+		sin(mlx->view.angle_z) * sin(mlx->view.angle_x) * dot.z;
+	new->y = sin(mlx->view.angle_z) * cos(mlx->view.angle_y) * dot.x +\
+		sin(mlx->view.angle_z) * sin(mlx->view.angle_y) *\
+		sin(mlx->view.angle_x) * dot.y + cos(mlx->view.angle_z) *\
+		cos(mlx->view.angle_x) * dot.y + sin(mlx->view.angle_z) *\
+		sin(mlx->view.angle_y) * cos(mlx->view.angle_x) * dot.z -\
+		cos(mlx->view.angle_z) * sin(mlx->view.angle_x);
+	new->z = -sin(mlx->view.angle_y) * dot.x + cos(mlx->view.angle_y) * \
+		sin(mlx->view.angle_x) * dot.y + cos(mlx->view.angle_y) * \
+		cos(mlx->view.angle_x) * dot.z;
+	new->x = (new->x - new->y) * cos(0.46373398);
+	new->y = -new->z + (new->x + new->y) * sin(0.46373398);
+	new->z = (new->x - new->y) * sin(0.46373398);
+}
+
 
 t_point		trans(t_point dot, t_mlx *mlx)
 {
@@ -29,26 +54,7 @@ t_point		trans(t_point dot, t_mlx *mlx)
 	}
 	else if (mlx->view.iso == 2)
 	{
-		dot.x -= 0.5 * mlx->map->x * mlx->view.scale;
-		dot.y -= 0.5 * mlx->map->y * mlx->view.scale;
-		new.x = cos(mlx->view.angle_z) * cos(mlx->view.angle_y) * dot.x +\
-			cos(mlx->view.angle_z) * sin(mlx->view.angle_y) *\
-			sin(mlx->view.angle_x) * dot.y - sin(mlx->view.angle_z) *\
-			cos(mlx->view.angle_x) * dot.y + cos(mlx->view.angle_z) *\
-			sin(mlx->view.angle_y) * cos(mlx->view.angle_x) * dot.z +\
-			sin(mlx->view.angle_z) * sin(mlx->view.angle_x) * dot.z;
-		new.y = sin(mlx->view.angle_z) * cos(mlx->view.angle_y) * dot.x +\
-			sin(mlx->view.angle_z) * sin(mlx->view.angle_y) *\
-			sin(mlx->view.angle_x) * dot.y + cos(mlx->view.angle_z) *\
-			cos(mlx->view.angle_x) * dot.y + sin(mlx->view.angle_z) *\
-			sin(mlx->view.angle_y) * cos(mlx->view.angle_x) * dot.z -\
-			cos(mlx->view.angle_z) * sin(mlx->view.angle_x);
-		new.z = -sin(mlx->view.angle_y) * dot.x + cos(mlx->view.angle_y) * \
-			sin(mlx->view.angle_x) * dot.y + cos(mlx->view.angle_y) * \
-			cos(mlx->view.angle_x) * dot.z;
-		new.x = (new.x - new.y) * cos(0.46373398);
-		new.y = -new.z + (new.x + new.y) * sin(0.46373398);
-		new.z = (new.x - new.y) * sin(0.46373398);
+		matrices(dot, mlx, &new);
 	}
 	else
 	{
