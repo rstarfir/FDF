@@ -6,7 +6,7 @@
 /*   By: rstarfir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 20:36:06 by rstarfir          #+#    #+#             */
-/*   Updated: 2020/05/24 19:39:59 by rstarfir         ###   ########.fr       */
+/*   Updated: 2020/05/27 19:21:06 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include <math.h>
 # include "libft.h"
 # define PI 3.1415926535
-# define WIDTH 1280
-# define HEIGHT 720
+# define WIDTH 1080
+# define HEIGHT 1080
 
 # define KEY_H 4
 # define KEY_Z 6
@@ -39,8 +39,8 @@
 # define KEY_DOWN 125
 # define KEY_UP 126
 
-# define FINCLR 0xFFC40C
-# define STRTCLR 0x555A9C
+# define FINCLR 0xFF6D31
+# define STRTCLR 0x73B66B
 # define DARK 0x000099
 
 typedef struct		s_data

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: poatmeal <poatmeal@student.42.fr>          +#+  +:+       +#+         #
+#    By: rstarfir <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/09 17:39:46 by poatmeal          #+#    #+#              #
-#    Updated: 2020/02/15 13:53:41 by poatmeal         ###   ########.fr        #
+#    Updated: 2020/05/27 19:23:49 by rstarfir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,14 +87,14 @@ NAME = libft.a
 all: $(NAME)
 
 $(NAME): $(OBJ) libft.h
-	gcc -Wall -Wextra -Werror -c $(SRCS) -I $(INCLUDES)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
+	@gcc -Wall -Wextra -Werror -c $(SRCS) -I $(INCLUDES)
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
 
 clean: 
-	rm -rf $(OBJ)
+	@rm -f $(OBJ)
 
 fclean: clean
-	rm -rf $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all

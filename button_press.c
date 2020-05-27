@@ -6,11 +6,11 @@
 /*   By: rstarfir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/26 19:20:48 by poatmeal          #+#    #+#             */
-/*   Updated: 2020/05/24 19:39:44 by rstarfir         ###   ########.fr       */
+/*   Updated: 2020/05/27 19:20:44 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fdf.h"
+#include "fdf.h"
 
 int			ft_close(void)
 {

@@ -6,11 +6,11 @@
 /*   By: rstarfir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 20:32:49 by rstarfir          #+#    #+#             */
-/*   Updated: 2020/05/24 21:18:41 by rstarfir         ###   ########.fr       */
+/*   Updated: 2020/05/27 19:23:15 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fdf.h"
+#include "fdf.h"
 
 int		get_color(double size, int color1, int color2)
 {

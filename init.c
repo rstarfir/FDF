@@ -6,11 +6,11 @@
 /*   By: rstarfir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 15:30:33 by rstarfir          #+#    #+#             */
-/*   Updated: 2020/05/24 19:34:43 by rstarfir         ###   ########.fr       */
+/*   Updated: 2020/05/27 19:23:24 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/fdf.h"
+#include "fdf.h"
 
 int			key_press(int keycode, t_mlx *tmp)
 {
