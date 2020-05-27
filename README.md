@@ -1,5 +1,5 @@
 # FDF
-## 42ecole entry graphics project
+## 42école entry graphics project
 ### This project is about creating a simplified 3D graphic representation of a
 ### relief landscape. Learning basics of graphic programming, and in particular how
 ### to place points in space, how to join them with segments and most importantly how to
