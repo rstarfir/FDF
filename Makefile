@@ -6,54 +6,45 @@
 #    By: rstarfir <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 20:25:07 by rstarfir          #+#    #+#              #
-#    Updated: 2020/05/24 21:33:45 by rstarfir         ###   ########.fr        #
+#    Updated: 2020/05/27 19:17:48 by rstarfir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBFT = libft
-
-MLX = minilibxclean
-
 NAME = fdf
-
+LIBFT = libft
+MLX = minilibx
 FFLAGS = -Wall -Wextra -Werror
-
 LFLAGS = -L $(LIBFT) -lft
-
 MLXFLAGS = -L $(MLX) -lmlx -framework OpenGL -framework AppKit
-
+HEADER_FILES = ./includes/fdf.h
 FILES = ./main.c ./map_check.c ./memory_allocation.c ./image.c ./draw.c ./init.c ./button_press.c ./change_coord.c 
-
 OBJS = $(FILES:%.c=%.o)
-
-LIBFT2 = libft
-
-MLX2 = minilibx
-
 INCLUDES = includes
 
 all: libft.a libmlx.a $(NAME)
 
+$(NAME): $(OBJS) $(HEADER_FILES)
+	@gcc $(FFLAGS) -o $(NAME) $(OBJS) $(LFLAGS) $(MLXFLAGS)
+
 libft.a:
-	make -C $(LIBFT)
+	@make -C $(LIBFT)
 
 libmlx.a:
-	make -C $(MLX)
+	@make -C $(MLX)
 
-$(NAME): $(OBJS)
-	gcc $(FFLAGS) -o $(NAME) $(OBJS) $(LFLAGS) $(MLXFLAGS)
+%.o: %.c $(HEADER_FILES)
+	@gcc $(FFLAGS) -I $(LIBFT) -I $(MLX) -I $(INCLUDES) -o $@ -c $<
 
-%.o: %.c
-	gcc $(FFLAGS) -I $(LIBFT2) -I $(MLX2) -I $(INCLUDES) -o $@ -c $<
 
 clean: 
-	rm -rf $(OBJS)
-	make -C $(LIBFT) clean
-	make -C $(MLX) clean
+	
+	@rm -rf $(OBJS)
+	@make -C $(LIBFT) clean
+	@make -C $(MLX) clean
 
 fclean: clean
-	rm -rf $(NAME)
-	make -C $(LIBFT) fclean
+	@rm -rf $(NAME)
+	@make -C $(LIBFT) fclean
 
 re: fclean all
 
