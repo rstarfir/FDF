@@ -31,5 +31,5 @@ Isometric view (press Z)
 * Color map reading
 * Arrow navigation (:arrow_up:, :arrow_down:, :arrow_left:, :arrow_right:)
 * Help Menu
-![rotation](https://github.com/rstarfir/FDF/blob/master/rotation.png)
+![rotation](https://github.com/rstarfir/FDF/blob/master/rot.GIF)
 ![Pyramid](https://github.com/rstarfir/FDF/blob/master/Pyramid.png)
