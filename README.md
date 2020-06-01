@@ -17,13 +17,13 @@ make
 
 #### FUNCTIONALITY
 Menu display (press H)
-![Menu](https://github.com/rstarfir/FDF/blob/master/Menu.png)
+![Menu](https://github.com/rstarfir/FDF/blob/master/imgs/Menu.png)
 
 Default projection or when key X is pressed (parallel view)
-![Parallel](https://github.com/rstarfir/FDF/blob/master/Parallel.png)
+![Parallel](https://github.com/rstarfir/FDF/blob/master/imgs/Parallel.png)
 
 Isometric view (press Z)
-![iso](https://github.com/rstarfir/FDF/blob/master/iso.png)
+![iso](https://github.com/rstarfir/FDF/blob/master/imgs/iso.png)
 
 ### BONUS PART
 * 3 axis rotation (Q,W,E,A,S,D)
@@ -31,5 +31,10 @@ Isometric view (press Z)
 * Color map reading
 * Arrow navigation (:arrow_up:, :arrow_down:, :arrow_left:, :arrow_right:)
 * Help Menu
+<<<<<<< HEAD
 ![rotation](https://github.com/rstarfir/FDF/blob/master/rot.GIF)
 ![Pyramid](https://github.com/rstarfir/FDF/blob/master/Pyramid.png)
+=======
+![rotation](https://github.com/rstarfir/FDF/blob/master/imgs/rotation.png)
+![Pyramid](https://github.com/rstarfir/FDF/blob/master/imgs/Pyramid.png)
+>>>>>>> d1eebe0874b995fd6c7c89edd72646fc3d5a9f24
