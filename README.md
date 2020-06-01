@@ -32,5 +32,5 @@ Isometric view (press Z)
 * Arrow navigation (:arrow_up:, :arrow_down:, :arrow_left:, :arrow_right:)
 * Help Menu
 
-![rot](https://github.com/rstarfir/FDF/blob/master/rot.GIF)
-![Pyramid](https://github.com/rstarfir/FDF/blob/master/Pyramid.png)
+![rot](https://github.com/rstarfir/FDF/blob/master/imgs/rot.GIF)
+![Pyramid](https://github.com/rstarfir/FDF/blob/master/imgs/Pyramid.png)
