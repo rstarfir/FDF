@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rstarfir <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 20:36:06 by rstarfir          #+#    #+#             */
-/*   Updated: 2020/05/28 21:09:39 by rstarfir         ###   ########.fr       */
+/*   Updated: 2020/07/03 19:09:28 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
-# include "libft.h"
+# include "../Libft/includes/libft.h"
 # define PI 3.1415926535
 # define WIDTH 1920
 # define HEIGHT 1080

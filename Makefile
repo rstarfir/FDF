@@ -3,37 +3,62 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rstarfir <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 20:25:07 by rstarfir          #+#    #+#              #
-#    Updated: 2020/05/27 19:17:48 by rstarfir         ###   ########.fr        #
+#    Updated: 2020/07/03 20:09:01 by rstarfir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
-LIBFT = libft
-MLX = minilibx
-FFLAGS = -Wall -Wextra -Werror
-LFLAGS = -L $(LIBFT) -lft
-MLXFLAGS = -L $(MLX) -lmlx -framework OpenGL -framework AppKit
-HEADER_FILES = ./includes/fdf.h
-FILES = ./main.c ./map_check.c ./memory_allocation.c ./image.c ./draw.c ./init.c ./button_press.c ./change_coord.c 
-OBJS = $(FILES:%.c=%.o)
-INCLUDES = includes
 
-all: libft.a libmlx.a $(NAME)
+LIBFT = Libft
+
+MLX = minilibx
+
+CC = gcc
+
+SRCDIR = srcs
+
+INCDIR = -I $(MLX) -I $(LIBFT) -I ./includes
+
+LIBDIR = -L $(MLX) -L $(LIBFT)
+
+LIB = -lft -lmlx
+
+CFLAGS = -Wall -Werror -Wextra $(INCDIR)
+
+HEADER_FILES = ./includes/fdf.h
+
+MLXFLAGS = -L -lmlx -framework OpenGL -framework AppKit
+
+FILES = button_press.c \
+		change_coord.c \
+		draw.c \
+		gradient.c \
+		image.c \
+		init.c \
+		main.c \
+		map_check.c \
+		memory_allocation.c
+
+SRCS = $(addprefix $(SRCDIR)/,$(FILES)
+
+OBJS = $(FILES:%.c=%.o)
+
+all: libft.a $(NAME)
 
 $(NAME): $(OBJS) $(HEADER_FILES)
-	@gcc $(FFLAGS) -o $(NAME) $(OBJS) $(LFLAGS) $(MLXFLAGS)
+	@$(CC) $(INCDIR) $(LIBDIR) $(LIB) $(FW) $(OBJS) -o $@ -c $<
 
 libft.a:
 	@make -C $(LIBFT)
 
-libmlx.a:
-	@make -C $(MLX)
+#libmlx.a:
+#	@make -C $(MLX)
 
-%.o: %.c $(HEADER_FILES)
-	@gcc $(FFLAGS) -I $(LIBFT) -I $(MLX) -I $(INCLUDES) -o $@ -c $<
+%.o: %.c
+	$(CC) $(CFLAGS)  $(INCDIR) $(LIBDIR) $(MLXFLAGS) $(SRCS) -o $@ -c $<
 
 
 clean: 
