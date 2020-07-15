@@ -6,7 +6,7 @@
 #    By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 20:25:07 by rstarfir          #+#    #+#              #
-#    Updated: 2020/07/03 20:09:01 by rstarfir         ###   ########.fr        #
+#    Updated: 2020/07/14 14:53:02 by rstarfir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,30 +32,29 @@ HEADER_FILES = ./includes/fdf.h
 
 MLXFLAGS = -L -lmlx -framework OpenGL -framework AppKit
 
-FILES = button_press.c \
-		change_coord.c \
+FILES = change_coord.c \
+		button_press.c \
 		draw.c \
-		gradient.c \
 		image.c \
 		init.c \
 		main.c \
 		map_check.c \
 		memory_allocation.c
 
-SRCS = $(addprefix $(SRCDIR)/,$(FILES)
+SRCS = $(addprefix $(SRCDIR)/,$(FILES))
 
-OBJS = $(FILES:%.c=%.o)
+OBJS = $(addprefix $(SRCDIR)/,$(FILES:.c=.o))
 
 all: libft.a $(NAME)
 
 $(NAME): $(OBJS) $(HEADER_FILES)
-	@$(CC) $(INCDIR) $(LIBDIR) $(LIB) $(FW) $(OBJS) -o $@ -c $<
+	@$(CC) $(CFLAGS) $(LIBDIR) $(LIB) $(OBJS) $(MLXFLAGS) -o $@ -c $<
 
 libft.a:
 	@make -C $(LIBFT)
 
-#libmlx.a:
-#	@make -C $(MLX)
+libmlx.a:
+	@make -C $(MLX)
 
 %.o: %.c
 	$(CC) $(CFLAGS)  $(INCDIR) $(LIBDIR) $(MLXFLAGS) $(SRCS) -o $@ -c $<

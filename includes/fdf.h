@@ -6,7 +6,7 @@
 /*   By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 20:36:06 by rstarfir          #+#    #+#             */
-/*   Updated: 2020/07/03 19:09:28 by rstarfir         ###   ########.fr       */
+/*   Updated: 2020/07/15 15:05:06 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct		s_img
 	void			*img_ptr;
 	int				*data;
 	double			clr;
-	double			clr2;;
+	double			clr2;
 	int				bpp;
 	int				size_l;
 	int				endian;
