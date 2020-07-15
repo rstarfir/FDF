@@ -6,49 +6,25 @@
 #    By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 20:25:07 by rstarfir          #+#    #+#              #
-#    Updated: 2020/07/14 14:53:02 by rstarfir         ###   ########.fr        #
+#    Updated: 2020/07/15 16:25:45 by rstarfir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
-
-LIBFT = Libft
-
+LIBFT = libft
 MLX = minilibx
-
-CC = gcc
-
-SRCDIR = srcs
-
-INCDIR = -I $(MLX) -I $(LIBFT) -I ./includes
-
-LIBDIR = -L $(MLX) -L $(LIBFT)
-
-LIB = -lft -lmlx
-
-CFLAGS = -Wall -Werror -Wextra $(INCDIR)
-
+FFLAGS = -Wall -Wextra -Werror
+LFLAGS = -L $(LIBFT) -lft
+MLXFLAGS = -L $(MLX) -lmlx -framework OpenGL -framework AppKit
 HEADER_FILES = ./includes/fdf.h
+FILES = ./main.c ./map_check.c ./memory_allocation.c ./image.c ./draw.c ./init.c ./button_press.c ./change_coord.c 
+OBJS = $(FILES:%.c=%.o)
+INCLUDES = includes
 
-MLXFLAGS = -L -lmlx -framework OpenGL -framework AppKit
-
-FILES = change_coord.c \
-		button_press.c \
-		draw.c \
-		image.c \
-		init.c \
-		main.c \
-		map_check.c \
-		memory_allocation.c
-
-SRCS = $(addprefix $(SRCDIR)/,$(FILES))
-
-OBJS = $(addprefix $(SRCDIR)/,$(FILES:.c=.o))
-
-all: libft.a $(NAME)
+all: libft.a libmlx.a $(NAME)
 
 $(NAME): $(OBJS) $(HEADER_FILES)
-	@$(CC) $(CFLAGS) $(LIBDIR) $(LIB) $(OBJS) $(MLXFLAGS) -o $@ -c $<
+	@gcc $(FFLAGS) -o $(NAME) $(OBJS) $(LFLAGS) $(MLXFLAGS)
 
 libft.a:
 	@make -C $(LIBFT)
@@ -56,8 +32,8 @@ libft.a:
 libmlx.a:
 	@make -C $(MLX)
 
-%.o: %.c
-	$(CC) $(CFLAGS)  $(INCDIR) $(LIBDIR) $(MLXFLAGS) $(SRCS) -o $@ -c $<
+%.o: %.c $(HEADER_FILES)
+	@gcc $(FFLAGS) -I $(LIBFT) -I $(MLX) -I $(INCLUDES) -o $@ -c $<
 
 
 clean: 

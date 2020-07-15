@@ -6,7 +6,7 @@
 /*   By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 20:36:06 by rstarfir          #+#    #+#             */
-/*   Updated: 2020/07/15 15:05:06 by rstarfir         ###   ########.fr       */
+/*   Updated: 2020/07/15 16:27:06 by rstarfir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
-# include "../Libft/includes/libft.h"
+# include "../libft/includes/libft.h"
 # define PI 3.1415926535
 # define WIDTH 1920
 # define HEIGHT 1080
