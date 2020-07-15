@@ -6,19 +6,29 @@
 #    By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 20:25:07 by rstarfir          #+#    #+#              #
-#    Updated: 2020/07/15 16:25:45 by rstarfir         ###   ########.fr        #
+#    Updated: 2020/07/15 16:37:16 by rstarfir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 LIBFT = libft
 MLX = minilibx
+SRCDIR = srcs
 FFLAGS = -Wall -Wextra -Werror
 LFLAGS = -L $(LIBFT) -lft
 MLXFLAGS = -L $(MLX) -lmlx -framework OpenGL -framework AppKit
-HEADER_FILES = ./includes/fdf.h
-FILES = ./main.c ./map_check.c ./memory_allocation.c ./image.c ./draw.c ./init.c ./button_press.c ./change_coord.c 
-OBJS = $(FILES:%.c=%.o)
+HEADER_FILES = ./includes/fdf.h\
+
+FILES = change_coord.c \
+		button_press.c \
+		draw.c \
+		image.c \
+		init.c \
+		main.c \
+		map_check.c \
+		memory_allocation.c
+SRCS = $(addprefix $(SRCDIR)/,$(FILES))
+OBJS = $(addprefix $(SRCDIR)/,$(FILES:.c=.o))
 INCLUDES = includes
 
 all: libft.a libmlx.a $(NAME)
