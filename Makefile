@@ -6,7 +6,7 @@
 #    By: rstarfir <rstarfir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/06 20:25:07 by rstarfir          #+#    #+#              #
-#    Updated: 2020/07/15 16:37:16 by rstarfir         ###   ########.fr        #
+#    Updated: 2020/07/15 19:35:46 by rstarfir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME = fdf
 LIBFT = libft
 MLX = minilibx
 SRCDIR = srcs
+OBJDIR = temp
 FFLAGS = -Wall -Wextra -Werror
 LFLAGS = -L $(LIBFT) -lft
 MLXFLAGS = -L $(MLX) -lmlx -framework OpenGL -framework AppKit
@@ -28,7 +29,7 @@ FILES = change_coord.c \
 		map_check.c \
 		memory_allocation.c
 SRCS = $(addprefix $(SRCDIR)/,$(FILES))
-OBJS = $(addprefix $(SRCDIR)/,$(FILES:.c=.o))
+OBJS = $(addprefix $(OBJDIR)/,$(FILES:.c=.o))
 INCLUDES = includes
 
 all: libft.a libmlx.a $(NAME)
@@ -42,13 +43,14 @@ libft.a:
 libmlx.a:
 	@make -C $(MLX)
 
-%.o: %.c $(HEADER_FILES)
+$(OBJDIR)/%.o: $(SRCDIR)/%.c $(HEADER_FILES)
+	mkdir -p temp
 	@gcc $(FFLAGS) -I $(LIBFT) -I $(MLX) -I $(INCLUDES) -o $@ -c $<
 
 
 clean: 
 	
-	@rm -rf $(OBJS)
+	@rm -rf $(OBJDIR)
 	@make -C $(LIBFT) clean
 	@make -C $(MLX) clean
 
